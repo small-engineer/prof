@@ -1,0 +1,25 @@
+/*===========================
+Base
+===========================*/
+@import "base.css";
+
+/*===========================
+Layout 
+===========================*/
+@import "blocks/layout/header.css";
+@import "blocks/layout/footer.css";
+@import "blocks/layout/effects.css";
+
+/*===========================
+Blocks
+===========================*/
+@import "blocks/error-page.css";
+
+/*===========================
+Profile 
+===========================*/
+@import "blocks/profile/profile.css";
+@import "blocks/profile/profile__about.css";
+@import "blocks/profile/profile__home.css";
+@import "blocks/profile/profile__contact.css";
+@import "blocks/profile/profile__gallery.css";

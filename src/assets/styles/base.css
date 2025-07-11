@@ -1,0 +1,19 @@
+:root {
+  --color-bg: #ffffff;
+  --color-bg-alt: #f9f9f9;
+  --color-text: #333333;
+  --color-text-alt: #666666;
+  --color-accent: #35c82d;
+  --gap: 1rem;
+  --padding: 1rem;
+  --font-family-main: "Manrope", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}

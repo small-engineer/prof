@@ -1,0 +1,8 @@
+.profile__footer {
+  text-align: center;
+  padding: var(--padding);
+}
+
+.profile__footer-text {
+  color: var(--color-text);
+}

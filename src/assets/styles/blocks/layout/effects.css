@@ -1,0 +1,72 @@
+:root {
+  --frame-border: 9px;
+}
+
+.page-frame {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  border: var(--frame-border) solid var(--color-text);
+  background-color: var(--color-bg); /* 最初に白背景 */
+  box-sizing: border-box;
+  transform: scale(1.05);
+  animation: frameExpand 0.5s ease-out forwards;
+}
+
+.fade-bg {
+  animation: frameExpand 0.5s ease-out forwards,
+             fadeBackground 0.3s ease-in 0.4s forwards;
+}
+
+@keyframes frameExpand {
+  0% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 背景を透明にするアニメーション */
+@keyframes fadeBackground {
+  0% {
+    background-color: var(--color-bg);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.fade-out {
+  animation: fadeOutEffect 0.3s ease-in forwards;
+}
+
+@keyframes fadeOutEffect {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
+
+.slide-in {
+  animation: slideInEffect 0.5s ease-out forwards;
+}
+
+@keyframes slideInEffect {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

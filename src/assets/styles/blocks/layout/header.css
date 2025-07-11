@@ -1,0 +1,68 @@
+.site-header {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-bg);
+  box-sizing: border-box;
+  padding: 2rem 2rem;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+}
+
+.site-header__nav {
+  display: flex;
+}
+
+.site-header__list {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.site-header__item {
+  position: relative;
+}
+
+.site-header__link {
+  font-family: var(--font-family-main);
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--color-text);
+  text-decoration: none;
+  position: relative;
+  padding: 0.5rem 0;
+  transition: color 0.3s;
+}
+
+/* 上に線を出す基本構造 */
+.site-header__link::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: var(--color-accent);
+  transition: width 0.3s;
+}
+
+/* ホバー時 */
+.site-header__link:hover::before {
+  width: 100%;
+}
+
+/* アクティブ状態 */
+.site-header__link.is-active::before {
+  width: 100%;
+}
+
+/* ホバー・アクティブ時に色も変える */
+.site-header__link:hover,
+.site-header__link.is-active {
+  color: var(--color-accent);
+}

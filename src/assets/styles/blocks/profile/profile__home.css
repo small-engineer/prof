@@ -1,0 +1,71 @@
+.profile__home {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 8rem 2rem 4rem;
+  background-color: var(--color-bg);
+  font-family: var(--font-family-main);
+  color: var(--color-text);
+  flex-wrap: wrap;
+}
+
+.profile__home-left {
+  flex: 1;
+  min-width: 280px;
+}
+
+.profile__home-name {
+  font-size: 3rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  white-space: nowrap;
+}
+
+.profile__home-icon {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.profile__home-icon img {
+  width: 60px;
+  height: auto;
+}
+
+.profile__home-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.profile__home-subtitle {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.profile__home-right {
+  flex: 1;
+  min-width: 300px;
+  position: relative; /* ← 重ね用の基準 */
+}
+
+.profile__home-photo-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.profile__home-photo {
+  width: 100%;
+  max-width: 500px;
+  object-fit: cover;
+  display: block;
+}
+
+.profile__home-stamp {
+  position: absolute;
+  top: -9.3rem;
+  right: 4rem;
+  width: 164px;
+  height: 164px;
+}

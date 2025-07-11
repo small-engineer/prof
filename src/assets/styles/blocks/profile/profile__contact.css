@@ -1,0 +1,89 @@
+.profile__contact {
+  text-align: center;
+  padding: 8rem 2rem 4rem;
+  background: var(--color-bg-alt) url("../images/pattern-bg.png") repeat;
+  background-size: 120px auto;
+  font-family: var(--font-family-main);
+  color: var(--color-text);
+}
+
+.profile__contact-main {
+  margin-top: 2rem;
+}
+
+.profile__contact-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.profile__contact-title--accent {
+  color: var(--color-accent);
+}
+
+.profile__contact-subtitle {
+  font-size: 1.2rem;
+  color: var(--color-text-alt);
+  margin-bottom: 3rem;
+}
+
+.profile__contact-mail {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border: 2px solid var(--color-text);
+  border-radius: 2rem;
+  background: var(--color-bg-alt);
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.profile__contact-mail:hover {
+  background-color: var(--color-accent);
+  color: var(--color-bg-alt);
+}
+
+.profile__contact-mail-icon {
+  font-size: 1.2rem;
+}
+
+/* SNSリンク群 */
+.profile__contact-sns {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.profile__contact-sns-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--color-text);
+  border-radius: 50%;
+  font-size: 1.5rem;
+  color: var(--color-text);
+  text-decoration: none;
+  background: var(--color-bg-alt);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.profile__contact-sns-link:hover {
+  background-color: var(--color-accent);
+  color: var(--color-bg-alt);
+}
+
+.profile__contact-sns-link i {
+  font-size: 1.2rem;
+}
+
+.profile__contact-footer {
+  margin-top: 4rem;
+  font-size: 0.8rem;
+  color: var(--color-text-alt);
+}
