@@ -8,7 +8,6 @@ import LRUCache from "./LRUCache.js";
 import TitleStore from "./TitleStore.js";
 import { updateActiveLink } from "../navActive.js";
 
-
 /** @typedef {function(string): string} TitleGetter */
 function getRepoBase() {
   return location.hostname === "localhost"
@@ -26,7 +25,6 @@ function normalizePath(path) {
   const repoBase = getRepoBase();
   return path.startsWith(repoBase) ? path.slice(repoBase.length) || "/" : path;
 }
-
 
 /** @const {function(HTMLElement): Promise<void>} */
 const waitAnimationEnd = (el) =>
@@ -261,12 +259,11 @@ export default class Router {
     if (this.prefetchedSet.has(path) || this.cache.get(path)) return;
     this.prefetchedSet.add(path);
     try {
-      const route = normalizePath(path);
+      const cleanRoute = route.startsWith("/") ? route : `/${route}`;
       const filePath =
-        route === "/"
+        cleanRoute === "/"
           ? `${CONFIG.rootDir}/home.html`
-          : `${CONFIG.rootDir}${route}.html`;
-
+          : `${CONFIG.rootDir}${cleanRoute}.html`;
       /* abort 無視 */
       const res = await fetch(filePath);
       if (!res.ok) return;
@@ -292,10 +289,11 @@ export default class Router {
     if (cached) return cached;
 
     const route = normalizePath(path);
+    const cleanRoute = route.startsWith("/") ? route : `/${route}`;
     const filePath =
-      route === "/"
+      cleanRoute === "/"
         ? `${CONFIG.rootDir}/home.html`
-        : `${CONFIG.rootDir}${route}.html`;
+        : `${CONFIG.rootDir}${cleanRoute}.html`;
 
     const res = await fetch(filePath, { signal });
     if (!res.ok) throw new Error(`Failed to fetch page: ${filePath}`);
