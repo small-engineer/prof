@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex" />
   <script>
     (function () {
-      const repoBase = "/";
+      const repoBase = "";
       const originalPath = location.pathname + location.search + location.hash;
       const redirectPath = repoBase + "/?" + encodeURIComponent(originalPath.replace(repoBase, ""));
       location.replace(redirectPath);
