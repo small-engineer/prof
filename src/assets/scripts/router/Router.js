@@ -8,24 +8,6 @@ import LRUCache from "./LRUCache.js";
 import TitleStore from "./TitleStore.js";
 import { updateActiveLink } from "../navActive.js";
 
-/** @typedef {function(string): string} TitleGetter */
-function getRepoBase() {
-  return location.hostname === "localhost"
-    ? ""
-    : "/" + location.pathname.split("/")[1];
-}
-
-/**
- * パスを正規化する（GitHub Pages対応）
- * リポジトリ名を除外し、純粋なSPAルートに変換
- * @param {string} path location.pathnameなど
- * @return {string} 例: "/gallery"
- */
-function normalizePath(path) {
-  const repoBase = getRepoBase();
-  return path.startsWith(repoBase) ? path.slice(repoBase.length) || "/" : path;
-}
-
 /** @const {function(HTMLElement): Promise<void>} */
 const waitAnimationEnd = (el) =>
   new Promise((resolve) =>
@@ -78,54 +60,13 @@ export default class Router {
     this.pointeroverHandler = this.onPointerOver.bind(this);
   }
 
-  /**
-   * @return {string} ページのパス
-   */
-  applyBasePathToLinks() {
-    const repoBase = getRepoBase();
-    const links = document.querySelectorAll(
-      "a[href^='/']:not([data-no-rewrite])"
-    );
-
-    links.forEach((a) => {
-      const relative = a.getAttribute("href");
-      if (!relative.startsWith(repoBase)) {
-        a.setAttribute("href", `${repoBase}${relative}`);
-      }
-    });
-  }
-
   /** Router を起動し、初期化とイベント設定を行う */
   async start() {
-    const params = new URLSearchParams(location.search);
-    const redirect = params.keys().next().value;
-    if (redirect) {
-      const realPath = decodeURIComponent(
-        redirect.replace(location.origin, "")
-      );
-      const repoBase = getRepoBase();
-      history.replaceState({}, "", `${repoBase}${realPath}`);
-
-      await this.titles.load();
-      document.body.addEventListener("click", this.clickHandler);
-      window.addEventListener("popstate", () => {
-        this.navigate(normalizePath(location.pathname));
-      });
-
-      /*navigateでとばす*/
-      await this.navigate(normalizePath(realPath));
-      this.injectSpeculationRules();
-      /*通常処理では不要*/
-      return;
-    }
-
     await this.titles.load();
     document.body.addEventListener("click", this.clickHandler);
-    window.addEventListener("popstate", () => {
-      router?.navigate(normalizePath(location.pathname));
-    });
+    document.body.addEventListener("pointerover", this.pointeroverHandler);
 
-    await this.navigate(normalizePath(location.pathname));
+    this.navigate(location.pathname);
     this.injectSpeculationRules();
   }
 
@@ -145,12 +86,8 @@ export default class Router {
     ev.preventDefault();
     if (this.isNavigating) return;
 
-    const repoBase = getRepoBase();
-    const fullPath = a.pathname;
-    const internalPath = normalizePath(fullPath);
-
-    history.pushState({}, "", `${repoBase}${internalPath}`);
-    this.routeTo(internalPath);
+    history.pushState({}, "", a.pathname);
+    this.routeTo(a.pathname);
   };
 
   /** navigate */
@@ -179,7 +116,6 @@ export default class Router {
       if (maybePromise instanceof Promise) {
         try {
           await maybePromise;
-          this.applyBasePathToLinks();
         } catch (err) {
           throw err;
         }
@@ -236,12 +172,7 @@ export default class Router {
       if (!isFallback) {
         await this.navigate("/404", true);
       } else {
-        this.view.innerHTML = `
-        <section class="error-page">
-          <h2>ページを表示できません</h2>
-          <p>一時的な問題が発生しています。</p>
-        </section>
-      `;
+        this.view.textContent = "このページは現在ご利用できません";
       }
     } finally {
       this.abort = null;
@@ -251,7 +182,7 @@ export default class Router {
 
   /**
    * 指定されたパスのページを事前に取得してキャッシュする
-   *const filePath
+   *
    * @param {string} path ページのパス
    * @return {!Promise<void>} Prefetch処理のPromise
    */
@@ -259,11 +190,11 @@ export default class Router {
     if (this.prefetchedSet.has(path) || this.cache.get(path)) return;
     this.prefetchedSet.add(path);
     try {
-      const cleanRoute = route.startsWith("/") ? route : `/${route}`;
       const filePath =
-        cleanRoute === "/"
+        path === "/"
           ? `${CONFIG.rootDir}/home.html`
-          : `${CONFIG.rootDir}${cleanRoute}.html`;
+          : `${CONFIG.rootDir}${path}.html`;
+
       /* abort 無視 */
       const res = await fetch(filePath);
       if (!res.ok) return;
@@ -288,12 +219,10 @@ export default class Router {
     const cached = this.cache.get(path);
     if (cached) return cached;
 
-    const route = normalizePath(path);
-    const cleanRoute = route.startsWith("/") ? route : `/${route}`;
     const filePath =
-      cleanRoute === "/"
+      path === "/"
         ? `${CONFIG.rootDir}/home.html`
-        : `${CONFIG.rootDir}${cleanRoute}.html`;
+        : `${CONFIG.rootDir}${path}.html`;
 
     const res = await fetch(filePath, { signal });
     if (!res.ok) throw new Error(`Failed to fetch page: ${filePath}`);
@@ -310,7 +239,7 @@ export default class Router {
   injectSpeculationRules() {
     if (!("speculationrules" in document.createElement("script"))) return;
     const aTags = Array.from(document.querySelectorAll("a[href^='/']"));
-    const urls = [...new Set(aTags.map((a) => normalizePath(a.pathname)))];
+    const urls = [...new Set(aTags.map((a) => a.pathname))];
 
     const script = document.createElement("script");
     script.type = "speculationrules";
