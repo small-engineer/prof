@@ -8,7 +8,7 @@
     (function () {
       const repoBase = "/";
       const originalPath = location.pathname + location.search + location.hash;
-      const redirectPath = repoBase + "/?" + encodeURIComponent(originalPath.replace(repoBase, ""));
+      const redirectPath = repoBase + "?" + encodeURIComponent(originalPath.replace(repoBase, ""));
       location.replace(redirectPath);
     })();
   </script>
