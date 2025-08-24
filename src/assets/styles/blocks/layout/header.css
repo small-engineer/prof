@@ -39,7 +39,6 @@
   transition: color 0.3s;
 }
 
-/* 上に線を出す基本構造 */
 .site-header__link::before {
   content: "";
   position: absolute;
@@ -51,17 +50,14 @@
   transition: width 0.3s;
 }
 
-/* ホバー時 */
 .site-header__link:hover::before {
   width: 100%;
 }
 
-/* アクティブ状態 */
 .site-header__link.is-active::before {
   width: 100%;
 }
 
-/* ホバー・アクティブ時に色も変える */
 .site-header__link:hover,
 .site-header__link.is-active {
   color: var(--color-accent);

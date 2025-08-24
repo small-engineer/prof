@@ -1,7 +1,8 @@
 .profile__contact {
   text-align: center;
   padding: 8rem 2rem 4rem;
-  background: var(--color-bg-alt) url("../images/pattern-bg.png") repeat;
+  background-color: var(--color-bg-alt);
+  min-height: 76vh;
   background-size: 120px auto;
   font-family: var(--font-family-main);
   color: var(--color-text);
@@ -50,7 +51,6 @@
   font-size: 1.2rem;
 }
 
-/* SNSリンク群 */
 .profile__contact-sns {
   margin-top: 2rem;
   display: flex;

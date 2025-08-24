@@ -3,9 +3,7 @@
  * @package
  */
 
-/** ページタイトルを JSON で管理するストア */
 export default class TitleStore {
-  /** @param {string} jsonPath JSONのパス */
   constructor(jsonPath) {
     /**
      * @type {string}

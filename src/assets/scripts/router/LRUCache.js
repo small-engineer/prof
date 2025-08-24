@@ -10,11 +10,10 @@ export default class LRUCache {
   constructor(maxSize, ttlMs) {
     this.max = maxSize;
     this.ttl = ttlMs;
-    /** @type {Map<K, {value: V, ts: number}>} */
+
     this.map = new Map();
   }
 
-  /** @param {K} key */
   get(key) {
     const entry = this.map.get(key);
     if (!entry) return undefined;

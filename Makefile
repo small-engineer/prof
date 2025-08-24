@@ -46,6 +46,7 @@ build:
 	@mkdir -p $(DIST_DIR)/assets/pages
 	@mkdir -p $(DIST_DIR)/assets/images
 	@mkdir -p $(DIST_DIR)/assets/components
+	@mkdir -p $(DIST_DIR)/assets/fonts
 	@cp -r $(SRC_DIR)/assets/pages/* $(DIST_DIR)/assets/pages/
 	@cp -r $(SRC_DIR)/assets/images/* $(DIST_DIR)/assets/images/
 	@cp -r $(SRC_DIR)/assets/components/* $(DIST_DIR)/assets/components/

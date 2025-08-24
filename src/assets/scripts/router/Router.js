@@ -8,13 +8,9 @@ import LRUCache from "./LRUCache.js";
 import TitleStore from "./TitleStore.js";
 import { updateActiveLink } from "../navActive.js";
 
-/** @const {function(HTMLElement): Promise<void>} */
 const waitAnimationEnd = (el) =>
-  new Promise((resolve) =>
-    el.addEventListener("animationend", resolve, { once: true })
-  );
+  new Promise((resolve) => el.addEventListener("animationend", resolve, { once: true }));
 
-/** @const {!{rootDir: string, defaultTitle: string, ttl: number, maxCache: number}} */
 const CONFIG = {
   rootDir: "assets/pages",
   defaultTitle: "Wakamiya Yuma",
@@ -31,36 +27,26 @@ export default class Router {
    * @param {!Record<string, function()>} pageInits 各ページの初期化関数
    */
   constructor(pageInits) {
-    /** @const {!HTMLElement} */
     this.view = document.getElementById("app");
     if (!this.view) throw new Error("#app is not found");
 
-    /** @private @const {!Record<string, function()>} */
     this.pageInits = pageInits;
 
-    /** @private @const {!Set<string>} */
     this.prefetchedSet = new Set();
 
-    /** @private @const {!LRUCache<string, string>} */
     this.cache = new LRUCache(CONFIG.maxCache, CONFIG.ttl);
 
-    /** @private @const {!TitleStore} */
     this.titles = new TitleStore(`${CONFIG.rootDir}/pageTitles.json`);
 
-    /** @private {?AbortController} */
     this.abort = null;
 
-    /** @private {boolean} */
     this.isNavigating = false;
 
-    /** @private {function(): void} */
     this.clickHandler = this.onClick.bind(this);
 
-    /** @private {function(): void} */
     this.pointeroverHandler = this.onPointerOver.bind(this);
   }
 
-  /** Router を起動し、初期化とイベント設定を行う */
   async start() {
     await this.titles.load();
     document.body.addEventListener("click", this.clickHandler);
@@ -70,7 +56,6 @@ export default class Router {
     this.injectSpeculationRules();
   }
 
-  /** Router破棄、リスナ解除  */
   destroy() {
     document.body.removeEventListener("click", this.clickHandler);
     document.body.removeEventListener("pointerover", this.pointeroverHandler);
@@ -78,7 +63,6 @@ export default class Router {
     this.abort = null;
   }
 
-  /** ページ内リンクのクリック判定とルーティング制御 */
   onClick = (ev) => {
     const a = ev.target.closest("a[href]");
     if (!a || !this.isInternalLink(a)) return;
@@ -90,12 +74,10 @@ export default class Router {
     this.routeTo(a.pathname);
   };
 
-  /** navigate */
   async routeTo(path) {
     await this.navigate(path);
   }
 
-  /** PointerOverでPrefetch */
   onPointerOver = (ev) => {
     if (ev.pointerType !== "mouse") return;
     const a = ev.target.closest("a[href]");
@@ -104,12 +86,10 @@ export default class Router {
     this.prefetch(a.pathname);
   };
 
-  /** HTMLを差し替えて初期化もする */
   async replaceContent(html, path) {
     this.view.innerHTML = html;
     document.title = this.titles.get(path);
 
-    /* 初期化を await 可能にしたい */
     const init = this.pageInits[path];
     if (typeof init === "function") {
       const maybePromise = init();
@@ -127,10 +107,7 @@ export default class Router {
 
   async animateSwap(htmlPromise, path) {
     this.view.classList.add("fade-out");
-    const [html] = await Promise.all([
-      htmlPromise,
-      waitAnimationEnd(this.view),
-    ]);
+    const [html] = await Promise.all([htmlPromise, waitAnimationEnd(this.view)]);
     this.replaceContent(html, path);
 
     this.view.classList.remove("fade-out");
@@ -140,12 +117,7 @@ export default class Router {
   }
 
   isInternalLink(a) {
-    return (
-      a &&
-      a.target !== "_blank" &&
-      a.origin === location.origin &&
-      !/\.\w+$/.test(a.pathname)
-    );
+    return a && a.target !== "_blank" && a.origin === location.origin && !/\.\w+$/.test(a.pathname);
   }
 
   /**
@@ -191,19 +163,14 @@ export default class Router {
     this.prefetchedSet.add(path);
     try {
       const filePath =
-        path === "/"
-          ? `${CONFIG.rootDir}/home.html`
-          : `${CONFIG.rootDir}${path}.html`;
+        path === "/" ? `${CONFIG.rootDir}/home.html` : `${CONFIG.rootDir}${path}.html`;
 
-      /* abort 無視 */
       const res = await fetch(filePath);
       if (!res.ok) return;
 
       const text = await res.text();
       this.cache.set(path, text);
-    } catch (err) {
-      /* Prefetch 失敗は握りつぶす */
-    }
+    } catch (err) {}
   }
 
   /**
@@ -219,10 +186,7 @@ export default class Router {
     const cached = this.cache.get(path);
     if (cached) return cached;
 
-    const filePath =
-      path === "/"
-        ? `${CONFIG.rootDir}/home.html`
-        : `${CONFIG.rootDir}${path}.html`;
+    const filePath = path === "/" ? `${CONFIG.rootDir}/home.html` : `${CONFIG.rootDir}${path}.html`;
 
     const res = await fetch(filePath, { signal });
     if (!res.ok) throw new Error(`Failed to fetch page: ${filePath}`);

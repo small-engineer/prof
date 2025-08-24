@@ -1,4 +1,4 @@
-<section class="profile__about">
+<section class="profile__about" itemscope itemtype="https://schema.org/Person">
   <div class="profile__about-header">
     <h1 class="profile__about-main-title">
       <span class="profile__about-main-title--accent">A</span>bout me
@@ -8,25 +8,318 @@
 
   <div class="profile__about-content">
     <div class="profile__about-text">
-      <h2 class="profile__about-name">ワカミヤ ユウマ</h2>
-      <p class="profile__about-description">
+      <h2 class="profile__about-name" itemprop="name">ワカミヤ ユウマ</h2>
+      <p class="profile__about-description" itemprop="jobTitle">
         現在、通信制大学に在籍しながら、合同会社KalyteroのCOOとして実務に携わっています。
         学生自治体でのITインフラ整備や、起業を通じたWeb開発・業務改善の経験を活かし、「構造化された課題解決」を得意としています。
       </p>
       <p class="profile__about-description">
-        技術面ではTypeScript・React（Next.js）を中心にフロントエンド開発を担当し、要件整理から実装・運用まで一貫して取り組んでいます。
+        技術面では
+        TypeScript・React（Next.js）を中心にフロントエンド、Node.js（Express）を中心にバックエンドを担当し、
+        要件整理から実装・運用まで一貫して取り組んでいます。
       </p>
       <p class="profile__about-description">
-        また、高校時代からWebマーケティングやSEOにも関わっており、ITを軸に実践の場で力を磨き続けてきました。
-        限られた条件下でも成果を出し切る実行力と、泥臭く手を動かし続ける継続力が私の強みです。今後も、現場で価値を発揮できる人材として成長し続けたいと考えております。
+        IT 活用のための DX 支援や、事業の IT 課題のコンサルティングにも従事しています。
+        「ビジネスの言葉」と「エンジニアの言葉」の双方を橋渡しできることが私の強みです。
       </p>
+
+      <ul class="profile__about-tags" aria-label="Strengths">
+        <li class="chip">AWS/Cloudflare</li>
+        <li class="chip">Linux/インフラ</li>
+        <li class="chip">WEBフルスタック</li>
+        <li class="chip">WEBマーケティング</li>
+        <li class="chip">ITシステム導入</li>
+        <li class="chip">Biz/Dev</li>
+      </ul>
     </div>
+
     <div class="profile__about-image-wrapper">
       <img
         src="assets/images/icon.jpg"
         alt="プロフィール画像"
         class="profile__about-image"
+        itemprop="image"
+        loading="lazy"
+        decoding="async"
       />
+    </div>
+  </div>
+
+  <div class="profile__about-extra">
+    <h2 class="profile__about-section-title">バックグラウンド</h2>
+    <ul class="card-list">
+      <li class="card">
+        <h3 class="card__title">マーケ出身の開発者</h3>
+        <p class="card__body">
+          WEBマーケ/SEOやCRMの運用経験を、要件定義・UX・実装優先度へ直結。事業目線で開発の言語化が可能。
+        </p>
+      </li>
+      <li class="card">
+        <h3 class="card__title">インフラ/クラウド</h3>
+        <p class="card__body">
+          Cloudflareでの運用経験に加えて、Linux/iOS
+          を含むOS理解に基づき、クラウドとネットワークの境界面を適切に設計。
+        </p>
+      </li>
+      <li class="card">
+        <h3 class="card__title">学びを実務へ最短反映</h3>
+        <p class="card__body">
+          情報経営イノベーション専門職大学・42Tokyo
+          に在籍（のち実務優先のため中退）。最新知見を素早く取り込み、現場価値へ転換。
+        </p>
+      </li>
+    </ul>
+
+    <h2 class="profile__about-section-title">来歴</h2>
+    <ol class="cv-timeline">
+      <!-- 2023–現在 -->
+      <li class="cv-timeline__item">
+        <div class="cv-timeline__date">
+          <span class="cv-period cv-period--ongoing" aria-label="期間">
+            <time class="cv-period__from" datetime="2023">2023</time>
+            <span class="cv-period__sep">–</span>
+            <time class="cv-period__to" datetime="present">現在</time>
+          </span>
+          <div class="cv-org">合同会社Kalytero</div>
+          <span class="cv-meta">COO（最高執行責任者）</span>
+        </div>
+        <div class="cv-timeline__rail" aria-hidden="true">
+          <span class="cv-dot"></span>
+        </div>
+        <div class="cv-timeline__body">
+          <div class="cv-role">要件定義/コンサルティング/Webエンジニアリング</div>
+          <p class="cv-desc">
+            クラウドやDXの導入に課題を抱える企業の支援を目的に参画。<br />
+            会計・財務設計やプロジェクトマネジメントに加え、要件定義・仕様策定から工数見積までを一貫して担当。<br />
+            AWSやCloudflareを用いたインフラ構築・デプロイ、Web開発を推進。
+          </p>
+        </div>
+      </li>
+
+      <!-- 2022–現在 -->
+      <li class="cv-timeline__item">
+        <div class="cv-timeline__date">
+          <span class="cv-period cv-period--ongoing" aria-label="期間">
+            <time class="cv-period__from" datetime="2022">2022</time>
+            <span class="cv-period__sep">–</span>
+            <time class="cv-period__to" datetime="present">現在</time>
+          </span>
+          <div class="cv-org">NPO法人 Pendemyデジタル教育ラボ</div>
+          <span class="cv-meta">（旧：Pendemyふちゅう教育ラボ）</span>
+        </div>
+        <div class="cv-timeline__rail" aria-hidden="true">
+          <span class="cv-dot"></span>
+        </div>
+        <div class="cv-timeline__body">
+          <div class="cv-role">STEAM教育企画・運営／デジタル活用支援</div>
+          <p class="cv-desc">
+            日本の公教育における画一的な価値観やIT教育の不足に課題を感じ参画。<br />
+            既存の価値観にとらわれず、本質的な価値を自ら判断できる学びを届けることを目指す。<br />
+            地域の子どもたちや教育関係者に向けたイベント企画・運営を通じ、STEAM教育やIT導入の実践を支援。
+          </p>
+        </div>
+      </li>
+
+      <!-- 2024-2024 -->
+      <li class="cv-timeline__item">
+        <div class="cv-timeline__date">
+          <span class="cv-period" aria-label="期間">
+            <time class="cv-period__from" datetime="2023">2024</time>
+            <span class="cv-period__sep">–</span>
+            <time class="cv-period__to" datetime="2023">2024</time>
+          </span>
+          <div class="cv-org">42Tokyo</div>
+          <span class="cv-meta"></span>
+        </div>
+        <div class="cv-timeline__rail" aria-hidden="true">
+          <span class="cv-dot"></span>
+        </div>
+      </li>
+
+      <!-- 2021-2023 -->
+      <li class="cv-timeline__item">
+        <div class="cv-timeline__date">
+          <span class="cv-period" aria-label="期間">
+            <time class="cv-period__from" datetime="2023">2021</time>
+            <span class="cv-period__sep">–</span>
+            <time class="cv-period__to" datetime="2023">2023</time>
+          </span>
+          <div class="cv-org">N高等学校</div>
+          <span class="cv-meta">5期生</span>
+        </div>
+        <div class="cv-timeline__rail" aria-hidden="true">
+          <span class="cv-dot"></span>
+        </div>
+      </li>
+
+      <!-- 2022–2023 -->
+      <li class="cv-timeline__item">
+        <div class="cv-timeline__date">
+          <span class="cv-period" aria-label="期間">
+            <time class="cv-period__from" datetime="2022">2022</time>
+            <span class="cv-period__sep">–</span>
+            <time class="cv-period__to" datetime="2023">2023</time>
+          </span>
+          <div class="cv-org">株式会社NoSchool</div>
+          <span class="cv-meta">インターン／アルバイト</span>
+        </div>
+        <div class="cv-timeline__rail" aria-hidden="true">
+          <span class="cv-dot"></span>
+        </div>
+        <div class="cv-timeline__body">
+          <div class="cv-role">メディア運営・マーケティング実務</div>
+          <p class="cv-desc">
+            オンライン家庭教師メディア「マナリンクTeachers」の運営に従事。<br />
+            記事編集・ライター調整など基礎業務に加え、SEOを意識したコンテンツ方針策定を担当。<br />
+            検索順位やユーザー関心を踏まえた企画・記事作成を推進し、媒体成長に貢献。<br />
+            また勉強会に登壇し、マーケ知見の共有を行うなど横断的な業務も経験。
+          </p>
+        </div>
+      </li>
+    </ol>
+
+    <!-- スキルセット（レーダーチャート3枚並列） -->
+    <h2 class="profile__about-section-title">スキルセット</h2>
+    <div class="skills-radar-container" role="group" aria-label="スキルレーダーチャート">
+      <figure class="skills-radar">
+        <figcaption class="skills-radar__title">フロントエンド</figcaption>
+        <canvas id="radar-frontend" aria-label="フロントエンド スキルレーダー" role="img"></canvas>
+      </figure>
+      <figure class="skills-radar">
+        <figcaption class="skills-radar__title">バックエンド</figcaption>
+        <canvas id="radar-backend" aria-label="バックエンド スキルレーダー" role="img"></canvas>
+      </figure>
+      <figure class="skills-radar">
+        <figcaption class="skills-radar__title">インフラ</figcaption>
+        <canvas id="radar-infra" aria-label="インフラ スキルレーダー" role="img"></canvas>
+      </figure>
+    </div>
+
+    <h2 class="profile__about-section-title">関連リンク</h2>
+    <ul class="affiliations" aria-label="関連リンク">
+      <!-- Kalytero -->
+      <li class="affiliations__item">
+        <a
+          class="affiliations__card"
+          href="https://www.kalytero.ne.jp/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="affiliations__avatar" aria-hidden="true" data-initial="Ka"></span>
+          <span class="affiliations__meta">
+            <strong class="affiliations__name">合同会社Kalytero</strong>
+            <span class="affiliations__role">COO</span>
+          </span>
+          <i
+            class="fa-solid fa-arrow-up-right-from-square affiliations__ext"
+            aria-hidden="true"
+          ></i>
+        </a>
+      </li>
+
+      <!-- Pendemy -->
+      <li class="affiliations__item">
+        <a
+          class="affiliations__card"
+          href="https://npo.pendemy.com/staff"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="affiliations__avatar" aria-hidden="true" data-initial="Pe"></span>
+          <span class="affiliations__meta">
+            <strong class="affiliations__name">NPO法人 Pendemyデジタル教育ラボ</strong>
+            <span class="affiliations__role">STEAM教育</span>
+          </span>
+          <i
+            class="fa-solid fa-arrow-up-right-from-square affiliations__ext"
+            aria-hidden="true"
+          ></i>
+        </a>
+      </li>
+
+      <!-- 42Tokyo -->
+      <li class="affiliations__item">
+        <a
+          class="affiliations__card"
+          href="https://42tokyo.jp/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="affiliations__avatar" aria-hidden="true" data-initial="42"></span>
+          <span class="affiliations__meta">
+            <strong class="affiliations__name">42Tokyo</strong>
+            <span class="affiliations__role">Piscine / 2Circleまで</span>
+          </span>
+          <i
+            class="fa-solid fa-arrow-up-right-from-square affiliations__ext"
+            aria-hidden="true"
+          ></i>
+        </a>
+      </li>
+
+      <!-- 42 Tokyo 起業部 -->
+      <li class="affiliations__item">
+        <a
+          class="affiliations__card"
+          href="https://entrepreneur.42tokyo.jp/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="affiliations__avatar" aria-hidden="true" data-initial="42E"></span>
+          <span class="affiliations__meta">
+            <strong class="affiliations__name">42 Tokyo 起業部</strong>
+            <span class="affiliations__role">元事務局</span>
+          </span>
+          <i
+            class="fa-solid fa-arrow-up-right-from-square affiliations__ext"
+            aria-hidden="true"
+          ></i>
+        </a>
+      </li>
+
+      <!-- NoSchool -->
+      <li class="affiliations__item">
+        <a
+          class="affiliations__card"
+          href="https://www.wantedly.com/companies/noschool/post_articles/490764"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="affiliations__avatar" aria-hidden="true" data-initial="NS"></span>
+          <span class="affiliations__meta">
+            <strong class="affiliations__name">株式会社NoSchool</strong>
+            <span class="affiliations__role">(Wantedly記事)</span>
+          </span>
+          <i
+            class="fa-solid fa-arrow-up-right-from-square affiliations__ext"
+            aria-hidden="true"
+          ></i>
+        </a>
+      </li>
+
+      <li class="affiliations__item">
+        <a
+          class="affiliations__card"
+          href="https://nnn.ed.jp/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="affiliations__avatar" aria-hidden="true" data-initial="N高"></span>
+          <span class="affiliations__meta">
+            <strong class="affiliations__name">N高等学校</strong>
+            <span class="affiliations__role">5期生</span>
+          </span>
+          <i
+            class="fa-solid fa-arrow-up-right-from-square affiliations__ext"
+            aria-hidden="true"
+          ></i>
+        </a>
+      </li>
+    </ul>
+
+    <div class="profile__about-cta">
+      <a class="btn" href="mailto:yuma-wakamiya@kalytero.ne.jp">お問い合わせ</a>
+      <a class="btn btn--ghost" href="/assets/resume.pdf" download rel="nofollow">履歴書（PDF）</a>
     </div>
   </div>
 </section>

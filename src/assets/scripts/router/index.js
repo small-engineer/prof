@@ -1,11 +1,18 @@
 import Router from "./Router.js";
 
-/** ページごとの初期化関数 */
 const pageInits = {
-  "/gallery": createInitOnce(async () => {
-    /* Swiper とかあったら入れる　*/
-    await Promise.resolve();
+  "/about": createInitOnce(async () => {
+    const { initAboutRadars } = await import("../graph/aboutRadar.js");
+    initAboutRadars();
   }),
+  "/gallery": createInitOnce(async () => {
+    const { initGalleryLightbox } = await import("../gallery.js"); // ← 追加
+    initGalleryLightbox();
+  }),
+  "/": async () => {
+    const { initTitleFx } = await import("../titleFx.js");
+    initTitleFx(document.getElementById("app"));
+  },
 };
 
 /**
@@ -28,7 +35,6 @@ function createInitOnce(initFn) {
   };
 }
 
-/** @type {?Router} */
 let router = null;
 
 /**
@@ -44,7 +50,6 @@ export function initRouter() {
   return router;
 }
 
-/** Routerを破棄する */
 export function destroyRouter() {
   router?.destroy();
   router = null;

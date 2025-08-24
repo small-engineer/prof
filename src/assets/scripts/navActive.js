@@ -10,7 +10,7 @@
  */
 export function updateActiveLink() {
   const links = document.querySelectorAll(".site-header__link");
-  /* ヘッダー未挿入時は何もしない*/
+
   if (!links.length) return;
 
   const current = location.pathname.replace(/\/$/, "");

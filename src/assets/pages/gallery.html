@@ -1,29 +1,258 @@
-<section class="gallery">
-  <h1 class="gallery__title">
+<section class="gallery" aria-labelledby="gallery-title">
+  <h1 id="gallery-title" class="gallery__title">
     <span class="gallery__title--accent">G</span>allery
   </h1>
 
   <div class="gallery__grid">
     <div class="gallery__card">
-      <img
-        src="assets/images/1_gallery.jpg"
-        alt="写真1"
-        class="gallery__image"
-      />
+      <figure class="gallery__figure">
+        <img
+          src="assets/images/1_gallery.webp"
+          alt="42Tokyo Picine"
+          class="gallery__image"
+          loading="lazy"
+          decoding="async"
+          data-lightbox="gallery"
+          data-year="2024"
+        />
+        <figcaption class="gallery__caption">
+          <span class="gallery__name">42Tokyo Picine</span>
+          <time class="gallery__meta" datetime="2024">2024</time>
+        </figcaption>
+        <span class="gallery__badge" aria-hidden="true">2024</span>
+      </figure>
     </div>
+
     <div class="gallery__card">
-      <img
-        src="assets/images/2_gallery.jpg"
-        alt="写真2"
-        class="gallery__image"
-      />
+      <figure class="gallery__figure">
+        <img
+          src="assets/images/2_gallery.webp"
+          alt="株式会社NoSchool"
+          class="gallery__image"
+          loading="lazy"
+          decoding="async"
+          data-lightbox="gallery"
+          data-year="2023"
+        />
+        <figcaption class="gallery__caption">
+          <span class="gallery__name">株式会社NoSchool</span>
+          <time class="gallery__meta" datetime="2023">2023</time>
+        </figcaption>
+        <span class="gallery__badge" aria-hidden="true">2023</span>
+      </figure>
     </div>
+
     <div class="gallery__card">
-      <img
-        src="assets/images/3_gallery.jpg"
-        alt="写真3"
-        class="gallery__image"
-      />
+      <figure class="gallery__figure">
+        <img
+          src="assets/images/3_gallery.webp"
+          alt="Pendemyデジタル教育ラボ"
+          class="gallery__image"
+          loading="lazy"
+          decoding="async"
+          data-lightbox="gallery"
+          data-year="2023"
+        />
+        <figcaption class="gallery__caption">
+          <span class="gallery__name">Pendemyデジタル教育ラボ</span>
+          <time class="gallery__meta" datetime="2023">2023</time>
+        </figcaption>
+        <span class="gallery__badge" aria-hidden="true">2023</span>
+      </figure>
+    </div>
+
+    <div class="gallery__card">
+      <figure class="gallery__figure">
+        <img
+          src="assets/images/4_gallery.webp"
+          alt="Pendemyデジタル教育ラボ"
+          class="gallery__image"
+          loading="lazy"
+          decoding="async"
+          data-lightbox="gallery"
+          data-year="2024"
+        />
+        <figcaption class="gallery__caption">
+          <span class="gallery__name">Pendemyデジタル教育ラボ</span>
+          <time class="gallery__meta" datetime="2024">2024</time>
+        </figcaption>
+        <span class="gallery__badge" aria-hidden="true">2024</span>
+      </figure>
+    </div>
+
+    <div class="gallery__card">
+      <figure class="gallery__figure">
+        <img
+          src="assets/images/5_gallery.webp"
+          alt="墨田区ミートアップ"
+          class="gallery__image"
+          loading="lazy"
+          decoding="async"
+          data-lightbox="gallery"
+          data-year="2023"
+        />
+        <figcaption class="gallery__caption">
+          <span class="gallery__name">墨田区ミートアップ</span>
+          <time class="gallery__meta" datetime="2023">2023</time>
+        </figcaption>
+        <span class="gallery__badge" aria-hidden="true">2023</span>
+      </figure>
+    </div>
+
+    <div class="gallery__card">
+      <figure class="gallery__figure">
+        <img
+          src="assets/images/6_gallery.webp"
+          alt="墨田区ミートアップ"
+          class="gallery__image"
+          loading="lazy"
+          decoding="async"
+          data-lightbox="gallery"
+          data-year="2023"
+        />
+        <figcaption class="gallery__caption">
+          <span class="gallery__name">墨田区ミートアップ</span>
+          <time class="gallery__meta" datetime="2023">2023</time>
+        </figcaption>
+        <span class="gallery__badge" aria-hidden="true">2023</span>
+      </figure>
+    </div>
+
+    <div class="gallery__card">
+      <figure class="gallery__figure">
+        <img
+          src="assets/images/7_gallery.webp"
+          alt="iU 久米ゼミ"
+          class="gallery__image"
+          loading="lazy"
+          decoding="async"
+          data-lightbox="gallery"
+          data-year="2025"
+        />
+        <figcaption class="gallery__caption">
+          <span class="gallery__name">iU</span>
+          <time class="gallery__meta" datetime="2025">2025</time>
+        </figcaption>
+        <span class="gallery__badge" aria-hidden="true">2025</span>
+      </figure>
+    </div>
+
+    <div class="gallery__card">
+      <figure class="gallery__figure">
+        <img
+          src="assets/images/8_gallery.webp"
+          alt="高校一年生の姿"
+          class="gallery__image"
+          loading="lazy"
+          decoding="async"
+          data-lightbox="gallery"
+          data-year="2021"
+        />
+        <figcaption class="gallery__caption">
+          <span class="gallery__name">高校一年生の姿</span>
+          <time class="gallery__meta" datetime="2021">2021</time>
+        </figcaption>
+        <span class="gallery__badge" aria-hidden="true">2021</span>
+      </figure>
     </div>
   </div>
+
+  <h2 id="foods-title" class="foods__title"><span class="foods__title--accent">F</span>oods</h2>
+
+  <ul class="foods__grid">
+    <li class="foods__card">
+      <figure class="foods__figure">
+        <img
+          src="assets/images/1_gallery-food.webp"
+          alt="タイ料理"
+          class="foods__image"
+          loading="lazy"
+          decoding="async"
+          data-lightbox="foods"
+          data-year="2024"
+        />
+        <figcaption class="foods__caption">
+          <span class="foods__name">タイ料理</span>
+          <time class="foods__meta" datetime="2024">2024</time>
+        </figcaption>
+        <span class="foods__badge" aria-hidden="true">2024</span>
+      </figure>
+    </li>
+
+    <li class="foods__card">
+      <figure class="foods__figure">
+        <img
+          src="assets/images/2_gallery-food.webp"
+          alt="ハンバーガー"
+          class="foods__image"
+          loading="lazy"
+          decoding="async"
+          data-lightbox="foods"
+          data-year="2024"
+        />
+        <figcaption class="foods__caption">
+          <span class="foods__name">ハンバーガー</span>
+          <time class="foods__meta" datetime="2024">2024</time>
+        </figcaption>
+        <span class="foods__badge" aria-hidden="true">2024</span>
+      </figure>
+    </li>
+
+    <li class="foods__card">
+      <figure class="foods__figure">
+        <img
+          src="assets/images/3_gallery-food.webp"
+          alt="ハンバーガー"
+          class="foods__image"
+          loading="lazy"
+          decoding="async"
+          data-lightbox="foods"
+          data-year="2024"
+        />
+        <figcaption class="foods__caption">
+          <span class="foods__name">ハンバーガー</span>
+          <time class="foods__meta" datetime="2024">2024</time>
+        </figcaption>
+        <span class="foods__badge" aria-hidden="true">2024</span>
+      </figure>
+    </li>
+
+    <li class="foods__card">
+      <figure class="foods__figure">
+        <img
+          src="assets/images/4_gallery-food.webp"
+          alt="ロシア料理"
+          class="foods__image"
+          loading="lazy"
+          decoding="async"
+          data-lightbox="foods"
+          data-year="2023"
+        />
+        <figcaption class="foods__caption">
+          <span class="foods__name">ロシア料理</span>
+          <time class="foods__meta" datetime="2023">2023</time>
+        </figcaption>
+        <span class="foods__badge" aria-hidden="true">2023</span>
+      </figure>
+    </li>
+
+    <li class="foods__card">
+      <figure class="foods__figure">
+        <img
+          src="assets/images/5_gallery-food.webp"
+          alt="ロシアの紅茶"
+          class="foods__image"
+          loading="lazy"
+          decoding="async"
+          data-lightbox="foods"
+          data-year="2023"
+        />
+        <figcaption class="foods__caption">
+          <span class="foods__name">ロシア料理（紅茶）</span>
+          <time class="foods__meta" datetime="2023">2023</time>
+        </figcaption>
+        <span class="foods__badge" aria-hidden="true">2023</span>
+      </figure>
+    </li>
+  </ul>
 </section>
