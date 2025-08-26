@@ -55,7 +55,7 @@ export function initAboutRadars() {
 
   const FRONT = [5, 3, 3, 5, 5, 4];
   const BACK = [4, 5, 4, 4, 3, 2];
-  const INFRA = [4, 4, 5, 4, 3, 5];
+  const INFRA = [4, 5, 4, 4, 3, 5];
 
   instances.push(
     new RadarChart(front, {
@@ -70,7 +70,7 @@ export function initAboutRadars() {
     }),
     new RadarChart(infra, {
       ...common,
-      labels: ["AWS", "Cloudflare", "Docker(Container)", "IasC", "Kubernetes", "Linux/IOS"],
+      labels: ["AWS", "Cloudflare", "Docker(Container)", "CI/CD", "Kubernetes", "Linux/IOS"],
       values: INFRA,
     })
   );
