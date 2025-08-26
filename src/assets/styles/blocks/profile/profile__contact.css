@@ -48,7 +48,9 @@
 }
 
 .profile__contact-mail-icon {
-  font-size: 1.2rem;
+  width: 1.2rem;
+  height: 1.2rem;
+
 }
 
 .profile__contact-sns {
@@ -71,6 +73,11 @@
   text-decoration: none;
   background: var(--color-bg-alt);
   transition: background-color 0.3s, color 0.3s;
+}
+
+.profile__contact-sns-link img {
+  width: 1.2rem;
+  height: 1.2rem;
 }
 
 .profile__contact-sns-link:hover {
