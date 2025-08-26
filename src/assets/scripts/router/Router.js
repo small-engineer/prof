@@ -30,6 +30,10 @@ export default class Router {
     this.view = document.getElementById("app");
     if (!this.view) throw new Error("#app is not found");
 
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+
     this.pageInits = pageInits;
 
     this.prefetchedSet = new Set();
@@ -105,16 +109,38 @@ export default class Router {
     updateActiveLink(path);
   }
 
-  async animateSwap(htmlPromise, path) {
-    this.view.classList.add("fade-out");
-    const [html] = await Promise.all([htmlPromise, waitAnimationEnd(this.view)]);
-    this.replaceContent(html, path);
 
-    this.view.classList.remove("fade-out");
-    this.view.classList.add("slide-in");
-    await waitAnimationEnd(this.view);
-    this.view.classList.remove("slide-in");
+  _scrollToTopInstant() {
+    const root = document.documentElement;
+    const prev = root.style.scrollBehavior;
+    root.style.scrollBehavior = "auto";
+    window.scrollTo(0, 0);
+    root.style.scrollBehavior = prev ?? "";
   }
+
+async animateSwap(htmlPromise, path) {
+  this.view.classList.add("fade-out");
+
+  void this.view.offsetWidth;
+
+  const htmlEl = document.documentElement;
+  const bodyEl = document.body;
+  const prevHtmlOverflow = htmlEl.style.overflow;
+  const prevBodyOverflow = bodyEl.style.overflow;
+  htmlEl.style.overflow = "hidden";
+  bodyEl.style.overflow = "hidden";
+  this._scrollToTopInstant();
+
+  const [html] = await Promise.all([htmlPromise, waitAnimationEnd(this.view)]);
+  this.replaceContent(html, path);
+
+  this.view.classList.remove("fade-out");
+  this.view.classList.add("slide-in");
+  await waitAnimationEnd(this.view);
+  this.view.classList.remove("slide-in");
+  htmlEl.style.overflow = prevHtmlOverflow;
+  bodyEl.style.overflow = prevBodyOverflow;
+}
 
   isInternalLink(a) {
     return a && a.target !== "_blank" && a.origin === location.origin && !/\.\w+$/.test(a.pathname);
